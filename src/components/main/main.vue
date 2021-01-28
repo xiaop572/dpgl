@@ -219,6 +219,7 @@
 <script>
 import "vue-video-player/src/custom-theme.css";
 import "video.js/dist/video-js.css";
+import axios from 'axios';
 import qs from "qs";
 import uu from "../../util/uuid";
 import sockjs from "sockjs-client";
@@ -574,7 +575,10 @@ export default {
     this.socket(); //连接socket
     this.getInsideData(); //获取内部数据
     this.getExternalData(); //获取外部数据
+    axios.get('http://zhcn.aihxkj.com/control/haik.php').then(res=>{
+      this.videoUrl=res.data.data.url;
     this.getVideo(); //获取视频
+    })
     setInterval(() => {
       this.holdLogin();
     }, 60 * 1000 * 28);
