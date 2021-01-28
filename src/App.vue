@@ -1,14 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
+    <portal-target name="destination">
+      <!--
+  This component can be located anywhere in your App.
+  The slot content of the above portal component will be rendered here.
+      -->
+    </portal-target>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {},
+  mounted() {}
+};
+</script>
 <style lang="less">
+body {
+  background: url("./assets/bg.png") no-repeat;
+  background-size: 100% 100%;
+}
+body,
+#app {
+  height: 100%;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
